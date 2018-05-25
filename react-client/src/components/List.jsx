@@ -1,11 +1,11 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = (props) => (
+const List = ({movies}) => (
   <div>
     <h4> List Component </h4>
-    There are { props.items.length } items.
-    { props.items.map(item => <ListItem item={item}/>)}
+    There are { movies.length } items.
+    { movies.map(movie => <ListItem movie={movie}/>)}
   </div>
 )
 

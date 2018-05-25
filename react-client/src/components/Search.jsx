@@ -1,0 +1,28 @@
+import React from 'react';
+
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: "Enter Year"
+    }
+  }
+  
+  handleInput (e) {
+    this.setState({
+      input: e.target.value 
+    })
+  }
+  
+  render() {
+    return (
+      <div>
+        <input value={this.state.input} onChange={this.handleInput.bind(this)}/> 
+        <button onClick={this.props.handleSearch(this.state.input)}>Submit</button>
+      </div>
+    )
+  }
+}
+
+
+export default Search;

@@ -8,6 +8,7 @@ var {save, selectAll} = require('../database-mongo/index.js')
 var app = express();
 
 app.use(bodyParser.json())
+app.use(express.static(__dirname+'/../react-client/dist'))
 
 // UNCOMMENT FOR REACT
 // app.use(express.static(__dirname + '/../react-client/dist'));
@@ -15,6 +16,7 @@ app.use(bodyParser.json())
 // UNCOMMENT FOR ANGULAR
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
+
 
 app.get('/movies', function (req, res) {
   //get all the movies in the database, which represent user's favorites
@@ -26,7 +28,7 @@ app.get('/movies', function (req, res) {
       res.json(data);
     }
   });
-});
+}); 
 
 app.post('/movies', function (req, res) { 
  console.log('req body', req.body) 
