@@ -11,15 +11,32 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var movieSchema = mongoose.Schema({
+  title: {
+    type: String, 
+    unique: true
+  }
+  poster: String 
 });
 
-var Item = mongoose.model('Item', itemSchema);
+//Movie is the collection 
+var Movie = mongoose.model('movie', movieSchema);
+
+let save = (movie) => {
+  return Move.findOneAndUpdate(
+    {
+      title: movie.title 
+    }, 
+    {
+      title: movie.title 
+      poster: movie.poster   
+    },
+    {upsert: true}
+    ).exec()   
+}
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Movie.find({}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {
@@ -27,5 +44,3 @@ var selectAll = function(callback) {
     }
   });
 };
-
-module.exports.selectAll = selectAll;
