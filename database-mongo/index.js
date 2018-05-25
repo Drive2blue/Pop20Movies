@@ -15,7 +15,7 @@ var movieSchema = mongoose.Schema({
   title: {
     type: String, 
     unique: true
-  }
+  },
   poster: String 
 });
 
@@ -28,7 +28,7 @@ let save = (movie) => {
       title: movie.title 
     }, 
     {
-      title: movie.title 
+      title: movie.title, 
       poster: movie.poster   
     },
     {upsert: true}
@@ -44,3 +44,7 @@ var selectAll = function(callback) {
     }
   });
 };
+
+module.exports.save = save 
+module.exports.selectAll = selectAll
+

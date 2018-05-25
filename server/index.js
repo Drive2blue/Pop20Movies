@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var {save, selectAll} = require('../database-mongo/index.js')
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 // var items = require('../database-mongo');
@@ -13,8 +14,10 @@ var app = express();
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
-app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
+app.get('/movie', function (req, res) {
+  //get all the movies in the database, which represent user's favorites
+  console.log('get working')
+  selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
@@ -22,6 +25,15 @@ app.get('/items', function (req, res) {
     }
   });
 });
+
+app.post('/movie', function (req, res) {
+  console.log('post working') 
+  save(movieObj).then(() =>
+    res.status(201).send()
+  ) //
+   
+});
+
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
