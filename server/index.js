@@ -7,6 +7,8 @@ var {save, selectAll} = require('../database-mongo/index.js')
 
 var app = express();
 
+app.use(bodyParser.json())
+
 // UNCOMMENT FOR REACT
 // app.use(express.static(__dirname + '/../react-client/dist'));
 
@@ -26,9 +28,9 @@ app.get('/movie', function (req, res) {
   });
 });
 
-app.post('/movie', function (req, res) {
-  console.log('post working') 
-  save(movieObj).then(() =>
+app.post('/movie', function (req, res) { 
+ console.log('req body', req.body) 
+  save(req.body).then(() =>
     res.status(201).send()
   ) //
    

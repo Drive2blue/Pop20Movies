@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/favmovies');
 
 var db = mongoose.connection;
 
@@ -23,7 +23,8 @@ var movieSchema = mongoose.Schema({
 var Movie = mongoose.model('movie', movieSchema);
 
 let save = (movie) => {
-  return Move.findOneAndUpdate(
+  console.log('save', movie)
+  return Movie.findOneAndUpdate(
     {
       title: movie.title 
     }, 
