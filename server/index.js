@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
-app.get('/movie', function (req, res) {
+app.get('/movies', function (req, res) {
   //get all the movies in the database, which represent user's favorites
   console.log('get working')
   selectAll(function(err, data) {
@@ -28,7 +28,7 @@ app.get('/movie', function (req, res) {
   });
 });
 
-app.post('/movie', function (req, res) { 
+app.post('/movies', function (req, res) { 
  console.log('req body', req.body) 
   save(req.body).then(() =>
     res.status(201).send()
