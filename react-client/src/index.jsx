@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = { 
       movies: [] 
     }
+    this.handleSearch.bind(this)
   }
   
   
@@ -21,17 +22,21 @@ class App extends React.Component {
   //
   
   handleSearch (input) {
-    axios.get('https://api.themoviedb.org/3/discover/movie', 
-      {
+    console.log('config',config)
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${config}&year=2017`) 
+      /*{
       api_key: config, 
       year: input,
       sort_by: "popularity.desc"
-      }
-    ).then((data) => {
-      console.log(data)
-      this.setState = {
-        movies: data  
-      }
+      }*/
+    .then((data) => {
+      console.log('what is data',data.data.results)
+      this.setState({
+        movies: data.data  
+      })
+    })
+    .catch((err) => {
+      console.error(err)
     })
   }
   
@@ -54,7 +59,7 @@ class App extends React.Component {
     return (<div>
       <h1>Top-Rated Movies</h1>
       <List movies={this.state.movies}/>
-      <Search handleSearch={this.handleSearch}/>  
+      <Search handleSearch={this.handleSearch.bind(this)}/>  
     </div>)
   }
 }
