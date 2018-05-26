@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ListItem = ({movie, handleSearch}) => (
+const ListItem = ({movie}) => (
   <div>
-    { props.item.description }
+    {movie.title}
   </div>
 )
 

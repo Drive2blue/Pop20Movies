@@ -23,7 +23,7 @@ class App extends React.Component {
   
   handleSearch (input) {
     console.log('config',config)
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${config}&year=2017`) 
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${config}&year=${input}`) 
       /*{
       api_key: config, 
       year: input,
@@ -32,7 +32,7 @@ class App extends React.Component {
     .then((data) => {
       console.log('what is data',data.data.results)
       this.setState({
-        movies: data.data  
+        movies: data.data.results  
       })
     })
     .catch((err) => {
