@@ -53,7 +53,17 @@ class App extends React.Component {
         })  
     })
   }
-  
+
+  deleteFavorites(movie) {
+    console.log('delete move',movie)
+    axios.delete('/movies', movie).then(() => {
+      return axios.get('/movies')
+    }).then((favdata) => { 
+        this.setState({
+        favorites:favdata.data
+        })
+      })
+  }
   /*
   componentDidMount() {
     $.ajax({
@@ -75,7 +85,7 @@ class App extends React.Component {
       <Search handleSearch={this.handleSearch.bind(this)}/>
       <br/>
       <List movies={this.state.movies} saveFavorites={this.saveFavorites.bind(this)}/>
-      <Favs favorites={this.state.favorites}/> 
+      <Favs favorites={this.state.favorites} deleteFavorites={this.deleteFavorites.bind(this)}/> 
     </div>)
   }
 }

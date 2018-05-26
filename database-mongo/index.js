@@ -45,6 +45,18 @@ var selectAll = function(callback) {
   });
 };
 
+let deleteFav = (movie) => {
+  return Movie.deleteOne(
+    {
+      title: movie.title 
+    }, function (err) { 
+      if (err) return handleError(err)
+    })   
+}
+
+
+
 module.exports.save = save 
 module.exports.selectAll = selectAll
+module.exports.deleteFav = deleteFav
 

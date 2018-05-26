@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var {save, selectAll} = require('../database-mongo/index.js')
+var {save, selectAll, deleteFav} = require('../database-mongo/index.js')
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 // var items = require('../database-mongo');
@@ -20,7 +20,7 @@ app.use(express.static(__dirname+'/../react-client/dist'))
 
 app.get('/movies', function (req, res) {
   //get all the movies in the database, which represent user's favorites
-  console.log('get working')
+  //console.log('get working')
   selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
@@ -32,10 +32,18 @@ app.get('/movies', function (req, res) {
 }); 
 
 app.post('/movies', function (req, res) { 
- console.log('req bodyyyyyyy', req.body) 
+ //console.log('req bodyyyyyyy', req.body) 
   save(req.body).then(() =>
     res.status(201).send()
   ) //
+   
+});
+
+app.delete('/movies', function (req, res) { 
+ console.log('delete body req', req) 
+    deleteFav(req).then(() =>
+    res.status(201).send()
+    )
    
 });
 
