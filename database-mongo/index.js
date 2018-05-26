@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/favmovies');
+mongoose.connect('mongodb://Drive2blue:Macrostar914*@ds135760.mlab.com:35760/pop20');
 
 var db = mongoose.connection;
 
@@ -46,7 +46,7 @@ var selectAll = function(callback) {
 };
 
 let deleteFav = (movie) => {
-  console.log("deleteFav", movie)
+  console.slog("deleteFav", movie)
   return Movie.deleteOne(
     {
       title: movie.title 
