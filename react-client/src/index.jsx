@@ -90,7 +90,7 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <h1>Get Popular!</h1>
+      <h1>Pop20!</h1>
       <Search handleSearch={this.handleSearch.bind(this)}/>
       <br/>
       <br/>
