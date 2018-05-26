@@ -34,7 +34,7 @@ class App extends React.Component {
   //
   
   handleSearch (input) {
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${config}&year=${input}`) 
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${config}&year=${input}&sort_by=popularity.desc`) 
       /*{
       api_key: config, 
       year: input,
@@ -90,8 +90,9 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <h1>Top-Rated Movies</h1>
+      <h1>Get Popular!</h1>
       <Search handleSearch={this.handleSearch.bind(this)}/>
+      <br/>
       <br/>
       <List movies={this.state.movies} saveFavorites={this.saveFavorites.bind(this)}/>
       <Favs favorites={this.state.favorites} deleteFavorites={this.deleteFavorites.bind(this)}/> 
