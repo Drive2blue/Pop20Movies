@@ -46,6 +46,7 @@ var selectAll = function(callback) {
 };
 
 let deleteFav = (movie) => {
+  console.log("deleteFav", movie)
   return Movie.deleteOne(
     {
       title: movie.title 

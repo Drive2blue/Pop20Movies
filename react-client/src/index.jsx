@@ -17,6 +17,15 @@ class App extends React.Component {
     this.handleSearch.bind(this)
   }
   
+  /*
+  componentDidMount() {
+    axios.get('/movies')
+    .then((data) => {
+      this.setState({
+        favorites: data.data.results
+      })
+    })
+  }*/
   
   //GET request will be sent when user types in a year  
   
@@ -24,7 +33,6 @@ class App extends React.Component {
   //
   
   handleSearch (input) {
-    console.log('config',config)
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${config}&year=${input}`) 
       /*{
       api_key: config, 
@@ -56,7 +64,7 @@ class App extends React.Component {
 
   deleteFavorites(movie) {
     console.log('delete move',movie)
-    axios.delete('/movies', movie).then(() => {
+    axios.delete('/movies', {data: movie}).then(() => {
       return axios.get('/movies')
     }).then((favdata) => { 
         this.setState({

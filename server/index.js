@@ -40,8 +40,8 @@ app.post('/movies', function (req, res) {
 });
 
 app.delete('/movies', function (req, res) { 
- console.log('delete body req', req) 
-    deleteFav(req).then(() =>
+ console.log('delete body reqqqqqqqqq', req) 
+    deleteFav(req.body).then(() =>
     res.status(201).send()
     )
    
