@@ -17,15 +17,16 @@ class App extends React.Component {
     this.handleSearch.bind(this)
   }
   
-  /*
+  
   componentDidMount() {
     axios.get('/movies')
     .then((data) => {
+      console.log('componentDIDM', data)
       this.setState({
-        favorites: data.data.results
+        favorites: data.data
       })
     })
-  }*/
+  }
   
   //GET request will be sent when user types in a year  
   
