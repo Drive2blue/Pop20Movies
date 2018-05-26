@@ -5,12 +5,14 @@ import List from './components/List.jsx';
 import axios from 'axios'
 import config from '../../config.js'
 import Search from './components/Search.jsx'
+import Favs from './components/Favs.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      movies: [] 
+      movies: [],
+      favorites: [] 
     }
     this.handleSearch.bind(this)
   }
@@ -41,7 +43,15 @@ class App extends React.Component {
   }
 
   saveFavorites(movie) {
-    axios.post('/movies',movie)
+    console.log('movie***',movie)
+    axios.post('/movies',movie).then(() => {
+      return axios.get('/movies')
+    }).then((favdata) => {
+        console.log('favdata', this)
+        this.setState({
+        favorites: favdata.data
+        })  
+    })
   }
   
   /*
@@ -62,8 +72,10 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Top-Rated Movies</h1>
-      <List movies={this.state.movies} saveFavorites={this.saveFavorites}/>
-      <Search handleSearch={this.handleSearch.bind(this)}/>  
+      <Search handleSearch={this.handleSearch.bind(this)}/>
+      <br/>
+      <List movies={this.state.movies} saveFavorites={this.saveFavorites.bind(this)}/>
+      <Favs favorites={this.state.favorites}/> 
     </div>)
   }
 }
