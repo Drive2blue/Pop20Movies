@@ -39,6 +39,10 @@ class App extends React.Component {
       console.error(err)
     })
   }
+
+  saveFavorites(movie) {
+    axios.post('/movies',movie)
+  }
   
   /*
   componentDidMount() {
@@ -58,7 +62,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Top-Rated Movies</h1>
-      <List movies={this.state.movies}/>
+      <List movies={this.state.movies} saveFavorites={this.saveFavorites}/>
       <Search handleSearch={this.handleSearch.bind(this)}/>  
     </div>)
   }

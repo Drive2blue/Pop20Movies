@@ -31,7 +31,7 @@ app.get('/movies', function (req, res) {
 }); 
 
 app.post('/movies', function (req, res) { 
- console.log('req body', req.body) 
+ console.log('req bodyyyyyyy', req.body) 
   save(req.body).then(() =>
     res.status(201).send()
   ) //

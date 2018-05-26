@@ -9,15 +9,12 @@ class Search extends React.Component {
   }
   
   handleInput (e) {
-    console.log('what is this',this)
     this.setState({
       input: e.target.value 
     })
   }
 
   search() {
-    console.log('search: what is this', this)
-    console.log('state input',this.state.input)
     this.props.handleSearch(this.state.input)
   }
   

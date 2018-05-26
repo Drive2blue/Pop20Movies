@@ -1,11 +1,9 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = ({movies}) => (
+const List = ({movies, saveFavorites}) => (
   <div>
-    <h4> List Component </h4>
-    There are { movies.length } items.
-    {movies.map(movie => <ListItem movie={movie}/>)}
+    {movies.map(movie => <ListItem movie={movie} saveFavorites={saveFavorites}/>)}
   </div>
 )
 

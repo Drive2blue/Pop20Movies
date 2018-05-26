@@ -23,14 +23,13 @@ var movieSchema = mongoose.Schema({
 var Movie = mongoose.model('movie', movieSchema);
 
 let save = (movie) => {
-  console.log('save', movie)
   return Movie.findOneAndUpdate(
     {
       title: movie.title 
     }, 
     {
       title: movie.title, 
-      poster: movie.poster   
+      poster: movie.poster_path   
     },
     {upsert: true}
     ).exec()   
