@@ -8,7 +8,6 @@ Pop20 allows user to search popular movies by year and create a favorites list
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](#tasks)
-1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
